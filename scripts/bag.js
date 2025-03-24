@@ -13,13 +13,15 @@ function displayBagSummary() {
   let totalItem = bagItemObjects.length;
   let totalMRP = 0;
   let totalDiscount = 0;
+  let finalPayment = 0;
 
   bagItemObjects.forEach(bagItem => {
     totalMRP += bagItem.original_price;
     totalDiscount += bagItem.original_price - bagItem.current_price;
+     finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
   });
 
-  let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
+  
   
 
   bagSummaryElement.innerHTML = `
